@@ -36,29 +36,20 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
+  maven_build:
+    needs: setup
+    name: Test & uild Backend with Maven
+    runs-on: self-hosted
+
+    steps:
     - name: Set up Maven
       uses: stCarolas/setup-maven@v4.5
       with:
         maven-version: 3.8.2
-
-  run_tests:
-    needs: setup
-    name: Run tests
-    runs-on: self-hosted
-    permissions:
-      packages: write
-
-    steps:
     - name: Test Backend with Maven
       run: |
         mvn clean test
 
-  maven_build:
-    needs: run_tests
-    name: Build Backend with Maven
-    runs-on: self-hosted
-
-    steps:
     - name: Build Backend with Maven
       run: |
         mvn clean package
