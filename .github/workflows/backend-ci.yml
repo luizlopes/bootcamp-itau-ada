@@ -70,10 +70,15 @@ jobs:
     # - name: Push Backend Docker image
     #   run:  docker push ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
 
-    - name: Build and push
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        file: ./backend/Dockerfile
-        push: true
-        tags: ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+    - name: ls
+      run: |
+        pwd
+        ls
+
+    # - name: Build and push
+    #   uses: docker/build-push-action@v4
+    #   with:
+    #     context: .
+    #     file: ./backend/Dockerfile
+    #     push: true
+    #     tags: ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
