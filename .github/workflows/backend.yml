@@ -2,7 +2,10 @@ name: Build backend app
 
 on:
   push:
-    branches: [ add_actions_backend ]
+    branches: 
+    - add_actions_backend
+    paths:
+    - 'backend/**'
 
 # env:
 #   GH_TOKEN: ${{ secrets.GH_TOKEN }}
