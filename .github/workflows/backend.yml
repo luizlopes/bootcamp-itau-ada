@@ -4,6 +4,9 @@ on:
   push:
     branches: 
     - add_actions_backend
+    paths: 
+    - 'backend/**'
+    - '.github/workflows/backend.yml'
 
 # env:
 #   GH_TOKEN: ${{ secrets.GH_TOKEN }}
