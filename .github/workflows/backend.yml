@@ -20,6 +20,8 @@ jobs:
   test:
     name: Build backend app and deploy
     runs-on: self-hosted
+    permissions:
+      packages: write
 
     steps:
     - uses: actions/checkout@v3
