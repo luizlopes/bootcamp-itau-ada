@@ -30,7 +30,18 @@ jobs:
       with:
         maven-version: 3.8.2
 
-    - name: Build with Maven
+    - name: Build Backend with Maven
       run: |
         cd backend
         mvn clean package package
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: build Backend Dockerfile
+      run: |  
+        cd backend
+        docker build . --tag bootcamp-backend:1.0.0
+
+    - name: list docker image
+      run: docker image ls
