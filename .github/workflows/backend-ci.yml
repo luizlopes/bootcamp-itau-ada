@@ -1,5 +1,9 @@
 name: Build backend app
 
+defaults:
+  run:
+    working-directory: "backend"
+
 on:
   workflow_dispatch:
   push:
@@ -39,12 +43,10 @@ jobs:
 
     - name: Test Backend with Maven
       run: |
-        cd backend
         mvn clean test
 
     - name: Build Backend with Maven
       run: |
-        cd backend
         mvn clean package
 
     - name: Log into registry ${{ env.REGISTRY }}
