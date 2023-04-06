@@ -51,19 +51,27 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: ${{ env.REGISTRY }}
-        username: ${{ github.actor }}
+        username: ${{ env.USER }}
         password: ${{ env.GH_TOKEN }}
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+    # - name: Set up Docker Buildx
+    #   uses: docker/setup-buildx-action@v2
 
-    - name: Build Backend Dockerfile
-      run: |
-        cd backend
-        docker build . --tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+    # - name: Build Backend Dockerfile
+    #   run: |
+    #     cd backend
+    #     docker build . --tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
 
-    - name: Tag Backend Docker image
-      run: docker tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }} ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+    # - name: Tag Backend Docker image
+    #   run: docker tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }} ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
 
-    - name: Push Backend Docker image
-      run:  docker push ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+    # - name: Push Backend Docker image
+    #   run:  docker push ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./backend/Dockerfile
+        push: true
+        tags: ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
