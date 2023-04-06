@@ -1,4 +1,8 @@
-name: Build backend app
+name: Build frontend app
+
+defaults:
+  run:
+    working-directory: "frontend"
 
 on:
   workflow_dispatch:
