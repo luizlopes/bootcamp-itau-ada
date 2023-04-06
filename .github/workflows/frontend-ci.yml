@@ -22,7 +22,7 @@ env:
 
 jobs:
   build_node:
-    name: Build frontend app and deploy
+    name: Build Frontend app with npm
     runs-on: self-hosted
     permissions:
       packages: write
@@ -52,7 +52,7 @@ jobs:
 
   docker_build_and_push:
     needs: build_node
-    name: Build and deploy front with Docker
+    name: Build and deploy Frontend with Docker
     runs-on: self-hosted
     permissions:
       packages: write
