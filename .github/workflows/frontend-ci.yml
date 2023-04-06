@@ -41,8 +41,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    # - name: Run tests
-    #   run: npm run test
+    - name: Run tests
+      run: npm run test -- --prod
 
     - name: Log into registry ${{ env.REGISTRY }}
       uses: docker/login-action@v2
