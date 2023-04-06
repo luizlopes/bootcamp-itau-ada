@@ -54,29 +54,21 @@ jobs:
       run: |
         mvn clean package
 
-  registry_login:
-    needs: maven_build
-    name: Log into registry
-    runs-on: self-hosted
-    permissions:
-      packages: write
-    
-    steps:
-    - name: Log into registry
-      uses: docker/login-action@v2
-      with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ env.USER }}
-        password: ${{ env.GH_TOKEN }}
-
   docker_build_and_push:
-    needs: registry_login
+    needs: maven_build
     name: Build backend app and deploy
     runs-on: self-hosted
     permissions:
       packages: write
     
     steps:
+    - name: Log into registry 
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ env.USER }}
+        password: ${{ env.GH_TOKEN }}
+
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
