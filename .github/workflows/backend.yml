@@ -1,9 +1,5 @@
 name: Build backend app
 
-defaults:
-  run:
-    working-directory: "backend/app/"
-
 on:
   workflow_dispatch:
   push:
