@@ -6,7 +6,7 @@ on:
     branches:
     - add_actions_backend
     paths:
-    - '.github/workflows/backend.yml'
+    - '.github/workflows/backend-ci.yml'
     - 'backend/**'
 
 env:
