@@ -58,7 +58,8 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ env.GH_TOKEN }}
 
-    - name: Tag and Push Backend Dockerfile
-      run: |  
-        docker tag bootcamp-backend:1.0.0 ghcr.io/luizlopes/bootcamp-backend:1.0.0
-        docker push bootcamp-backend:1.0.0 ghcr.io/luizlopes/bootcamp-backend:1.0.0
+    - name: Tag Backend Docker image
+      run: docker tag bootcamp-backend:1.0.0 ghcr.io/luizlopes/bootcamp-backend:1.0.0
+
+    - name: Push Backend Docker image
+      run:  docker push bootcamp-backend:1.0.0 ghcr.io/luizlopes/bootcamp-backend:1.0.0
