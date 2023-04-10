@@ -35,8 +35,8 @@ jobs:
       with:
         node-version: 16
 
-    - name: Install Angular
-      run: npm install -g @angular/cli
+    # - name: Install Angular
+    #   run: npm install -g @angular/cli
 
     - name: Install dependencies
       run: npm install
@@ -53,7 +53,7 @@ jobs:
   docker_build_and_push:
     needs: build_node
     name: Build and deploy Frontend with Docker
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       packages: write
 
