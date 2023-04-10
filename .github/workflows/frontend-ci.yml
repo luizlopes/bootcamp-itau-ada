@@ -24,6 +24,7 @@ jobs:
   build_node:
     name: Build Frontend app with npm
     runs-on: ubuntu-latest #self-hosted
+    timeout-minutes: 5
     permissions:
       packages: write
 
@@ -35,8 +36,8 @@ jobs:
       with:
         node-version: 16
 
-    # - name: Install Angular
-    #   run: npm install -g @angular/cli
+    - name: Install Angular
+      run: npm install -g @angular/cli
 
     - name: Install dependencies
       run: npm install
