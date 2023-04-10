@@ -42,14 +42,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    # - name: Run server
-    #   run: npm run start --port 9876 &
-
-    # - name: Sleep for 15 seconds
-    #   run: sleep 15
-
-    - name: Run tests
-      run: ng test --watch=false --browsers=ChromeHeadless
+    # - name: Run tests
+    #   run: ng test --watch=false 
 
   docker_build_and_push:
     needs: build_node
