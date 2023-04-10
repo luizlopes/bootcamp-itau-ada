@@ -2,7 +2,7 @@ name: Build frontend app
 
 defaults:
   run:
-    working-directory: "frontend/app"
+    working-directory: "frontend"
 
 on:
   workflow_dispatch:
@@ -40,7 +40,9 @@ jobs:
       run: npm install -g @angular/cli
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd app
+        npm install
 
     # - name: Run tests
     #   run: ng test --watch=false 
